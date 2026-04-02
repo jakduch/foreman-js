@@ -14,7 +14,7 @@ jobs:
     steps:
     # only run if changes are detected in specified path
     - name: Detect changes
-      uses: dorny/paths-filter@v2.2.0
+      uses: dorny/paths-filter@v3
       id: changes
       with:
         filters: |
@@ -22,12 +22,12 @@ jobs:
             - packages/${{ matrix.package }}/**
     - name: Set up node
       if: ${{ steps.changes.outputs.matched == 'true' }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v4
       with:
         node-version: 14.x
     - name: Checkout foreman-js
       if: ${{ steps.changes.outputs.matched == 'true' }}
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     - name: Package tarball
       if: ${{ steps.changes.outputs.matched == 'true' }}
       run:  npm pack

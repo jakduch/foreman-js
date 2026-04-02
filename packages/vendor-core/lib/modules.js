@@ -78,11 +78,10 @@ module.exports = [
   /**
    * UUID
    */
-  'uuid',
-  'uuid/v1',
-  'uuid/v3',
-  'uuid/v4',
-  'uuid/v5',
+  {
+    name: 'uuid',
+    path: '@theforeman/vendor-core/lib/customModules/uuid.js',
+  },
 
   /**
    * Custom modules

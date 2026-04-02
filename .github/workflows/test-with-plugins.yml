@@ -15,29 +15,29 @@ jobs:
           - repo: katello
             org: Katello
             use-foreman: true
-            ruby: 2.7
+            ruby: '3.0'
           - repo: foreman-tasks
             org: theforeman
             use-foreman: true
-            ruby: 2.7
+            ruby: '3.0'
     steps:
       - name: Use Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: 22.x
       - name: Checkout foreman-js
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           path: ./projects/foreman-js
       - name: Checkout foreman
         if: ${{ matrix.use-foreman }}
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: theforeman/foreman
           path: ./projects/foreman
       - name: Checkout ${{ matrix.repo }}
         if: ${{ matrix.repo != 'foreman' }}
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: ${{ matrix.org }}/${{ matrix.repo }}
           ref: ${{ matrix.ref }}
